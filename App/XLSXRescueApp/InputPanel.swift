@@ -5,7 +5,7 @@ struct InputPanel: View {
     @Bindable var model: RecoveryViewModel
 
     var body: some View {
-        DashboardCard(title: "1. Recovery input", systemImage: "doc.badge.key") {
+        DashboardCard(title: "1. Recovery input", systemImage: "doc.fill") {
             HStack(alignment: .top, spacing: 18) {
                 workbookPane
                 Divider()

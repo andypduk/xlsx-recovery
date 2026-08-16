@@ -9,6 +9,7 @@ let package = Package(
         .executable(name: "xlsx-rescue", targets: ["XLSXRescueCLI"]),
         .library(name: "OfficeCrypto", targets: ["OfficeCrypto"]),
         .library(name: "Recovery", targets: ["Recovery"]),
+        .library(name: "MetalVerifier", targets: ["MetalVerifier"]),
     ],
     targets: [
         .target(name: "OfficeCrypto"),
@@ -16,6 +17,7 @@ let package = Package(
             name: "Recovery",
             dependencies: ["OfficeCrypto"]
         ),
+        .target(name: "MetalVerifier", dependencies: ["OfficeCrypto", "Recovery"], resources: [.process("Office2013KDF.metal")]),
         .executableTarget(
             name: "XLSXRescueCLI",
             dependencies: ["OfficeCrypto"]
@@ -32,6 +34,7 @@ let package = Package(
             name: "RecoveryTests",
             dependencies: ["Recovery", "OfficeCrypto"]
         ),
+        .testTarget(name: "MetalVerifierTests", dependencies: ["MetalVerifier", "OfficeCrypto", "Recovery"]),
     ],
     swiftLanguageModes: [.v6]
 )

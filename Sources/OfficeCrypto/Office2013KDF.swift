@@ -30,6 +30,15 @@ public enum Office2013KDF {
     ) throws -> Office2013DerivedKeys {
         guard !password.utf8.contains(0) else { throw OfficeCryptoError.invalidCandidate }
 
+        let digest = try spinDigest(password: password, parameters: parameters)
+        return deriveKeys(spinDigest: digest)
+    }
+
+    public static func spinDigest(
+        password: String,
+        parameters: Office2013Parameters
+    ) throws -> Data {
+        guard !password.utf8.contains(0) else { throw OfficeCryptoError.invalidCandidate }
         var initial = Data(capacity: parameters.salt.count + password.utf16.count * 2)
         initial.append(parameters.salt)
         initial.append(passwordBytes(password))
@@ -43,7 +52,11 @@ public enum Office2013KDF {
             }
             digest = sha512(iterationInput)
         }
+        return digest
+    }
 
+    public static func deriveKeys(spinDigest digest: Data) -> Office2013DerivedKeys {
+        precondition(digest.count == SHA512.byteCount)
         return Office2013DerivedKeys(
             verifierInputKey: deriveKey(digest: digest, blockKey: verifierInputBlockKey),
             verifierHashKey: deriveKey(digest: digest, blockKey: verifierHashBlockKey)

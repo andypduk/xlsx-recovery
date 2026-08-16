@@ -7,6 +7,20 @@ public enum CPUOffice2013Verifier {
         against parameters: Office2013Parameters
     ) throws -> Bool {
         let keys = try Office2013KDF.derive(password: candidate, parameters: parameters)
+        return try verify(derivedKeys: keys, against: parameters)
+    }
+
+    public static func verify(
+        spinDigest: Data,
+        against parameters: Office2013Parameters
+    ) throws -> Bool {
+        try verify(derivedKeys: Office2013KDF.deriveKeys(spinDigest: spinDigest), against: parameters)
+    }
+
+    private static func verify(
+        derivedKeys keys: Office2013DerivedKeys,
+        against parameters: Office2013Parameters
+    ) throws -> Bool {
         let verifier = try decryptCBC(
             parameters.encryptedVerifier,
             key: keys.verifierInputKey,

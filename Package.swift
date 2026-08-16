@@ -8,9 +8,11 @@ let package = Package(
     products: [
         .executable(name: "xlsx-rescue", targets: ["XLSXRescueCLI"]),
         .library(name: "OfficeCrypto", targets: ["OfficeCrypto"]),
+        .library(name: "Recovery", targets: ["Recovery"]),
     ],
     targets: [
         .target(name: "OfficeCrypto"),
+        .target(name: "Recovery"),
         .executableTarget(
             name: "XLSXRescueCLI",
             dependencies: ["OfficeCrypto"]
@@ -22,6 +24,10 @@ let package = Package(
         .testTarget(
             name: "OfficeCryptoTests",
             dependencies: ["OfficeCrypto"]
+        ),
+        .testTarget(
+            name: "RecoveryTests",
+            dependencies: ["Recovery"]
         ),
     ],
     swiftLanguageModes: [.v6]

@@ -19,6 +19,10 @@ let package = Package(
             name: "CLITests",
             dependencies: ["XLSXRescueCLI", "OfficeCrypto"]
         ),
+        .testTarget(
+            name: "OfficeCryptoTests",
+            dependencies: ["OfficeCrypto"]
+        ),
     ],
     swiftLanguageModes: [.v6]
 )

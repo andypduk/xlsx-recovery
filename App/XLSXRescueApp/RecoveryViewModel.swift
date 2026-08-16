@@ -68,8 +68,16 @@ final class RecoveryViewModel {
     }
 
     func cancel() {
-        guard case .recovering = state else { return }
-        runner?.requestCancel()
+        switch state {
+        case .recovering:
+            runner?.requestCancel()
+        case .paused:
+            runner?.requestCancel()
+            if let selectedInput { state = .ready(selectedInput) }
+            else { state = .idle }
+        default:
+            return
+        }
     }
 
     func reset() {

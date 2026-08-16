@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		01CAB0D122D968D7940319FF /* AppError.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2C151BB0E10042BCEDAAADD /* AppError.swift */; };
+		049E3BABA2C67D32A5966983 /* ResultPanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 488488619E4380640E652CF4 /* ResultPanel.swift */; };
 		1A3CD225097DF14DD98FA8DD /* RecoveryConfigurationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC87777155615636482EE5CE /* RecoveryConfigurationTests.swift */; };
 		2543D6132C06369AC7943FF1 /* ProgressPresentationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB4431372C10701B7FD2FED7 /* ProgressPresentationTests.swift */; };
 		372E38E874DA62949C779027 /* RecoveryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6DCFDC840AFB517DCE79A4F /* RecoveryViewModel.swift */; };
@@ -19,6 +20,8 @@
 		8A8AA049221E13E3E2907984 /* Recovery in Frameworks */ = {isa = PBXBuildFile; productRef = 04A3909CC868B242B434E74D /* Recovery */; };
 		AAB1E02F9C57EDF0BB08DD7F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AA62B14A08178136646F7EEB /* Assets.xcassets */; };
 		AC231D13C6CD84AC3DBF6BE8 /* MetalVerifier in Frameworks */ = {isa = PBXBuildFile; productRef = 34C8A62F974C88E99616B1CA /* MetalVerifier */; };
+		ACE6C22D122760667E1E22C1 /* InputPanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19C37C78299F0BEDCE796732 /* InputPanel.swift */; };
+		AF37291DA57965430ADAA848 /* ErrorBanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0408B569BC58541C0FFAA971 /* ErrorBanner.swift */; };
 		B1319DE401A285D8276DEBB8 /* AppRecoveryRunner.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1B332515F74498323797439 /* AppRecoveryRunner.swift */; };
 		D6FDC00DBEF85769657DEF34 /* RecoveryConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6CC14426B0D51FF92090FCA /* RecoveryConfiguration.swift */; };
 		DD8A8390510F3D6D12329E30 /* RecoveryDashboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF30E9A964B84D82839E825C /* RecoveryDashboardView.swift */; };
@@ -26,7 +29,9 @@
 		DEBE30AEBDAB728CA80DEFC9 /* AppRecoveryRunnerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86AA15644EEAEC8FBB4B7F25 /* AppRecoveryRunnerTests.swift */; };
 		DFC474743F427063E6D793E4 /* RecoveryRunning.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB4DF8505FA0B7232C43DE1C /* RecoveryRunning.swift */; };
 		E09CBD08FB2985C3A31F3CBC /* RecoveryViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6515CA4B042D43A2908E2774 /* RecoveryViewModelTests.swift */; };
+		E54D75E37473FF766EA11A10 /* ActiveRecoveryPanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A7217DB4FF6552FC23EA0F5 /* ActiveRecoveryPanel.swift */; };
 		E624F2B5EF5C8D08EAFA5347 /* OfficeCrypto in Frameworks */ = {isa = PBXBuildFile; productRef = B3CBBB238B56401A441E68C1 /* OfficeCrypto */; };
+		EC6152E1A625DF235708B9C5 /* ConfigurationPanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C66DA800AB13F757D136D8CE /* ConfigurationPanel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,9 +45,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0408B569BC58541C0FFAA971 /* ErrorBanner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorBanner.swift; sourceTree = "<group>"; };
 		05FBADECACFEA80C80657C31 /* FileSelectionService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileSelectionService.swift; sourceTree = "<group>"; };
+		19C37C78299F0BEDCE796732 /* InputPanel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputPanel.swift; sourceTree = "<group>"; };
+		2A7217DB4FF6552FC23EA0F5 /* ActiveRecoveryPanel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActiveRecoveryPanel.swift; sourceTree = "<group>"; };
 		2D583CD98CF1BDF9BEBB494A /* ProgressPresentation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressPresentation.swift; sourceTree = "<group>"; };
 		47E22588B23D089F988EFCEF /* i-n */ = {isa = PBXFileReference; lastKnownFileType = folder; name = "i-n"; path = ..; sourceTree = SOURCE_ROOT; };
+		488488619E4380640E652CF4 /* ResultPanel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultPanel.swift; sourceTree = "<group>"; };
 		4D5938E022E48BCD26234ECA /* XLSXRescueApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = XLSXRescueApp.entitlements; sourceTree = "<group>"; };
 		6515CA4B042D43A2908E2774 /* RecoveryViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecoveryViewModelTests.swift; sourceTree = "<group>"; };
 		86AA15644EEAEC8FBB4B7F25 /* AppRecoveryRunnerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppRecoveryRunnerTests.swift; sourceTree = "<group>"; };
@@ -53,6 +62,7 @@
 		B2C151BB0E10042BCEDAAADD /* AppError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppError.swift; sourceTree = "<group>"; };
 		B2D0325E2A118036B5FB37F5 /* XLSXRescueApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XLSXRescueApp.swift; sourceTree = "<group>"; };
 		B7D6B879604EBD35504B553C /* ClipboardService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClipboardService.swift; sourceTree = "<group>"; };
+		C66DA800AB13F757D136D8CE /* ConfigurationPanel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigurationPanel.swift; sourceTree = "<group>"; };
 		CB4431372C10701B7FD2FED7 /* ProgressPresentationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressPresentationTests.swift; sourceTree = "<group>"; };
 		CC87777155615636482EE5CE /* RecoveryConfigurationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecoveryConfigurationTests.swift; sourceTree = "<group>"; };
 		CF30E9A964B84D82839E825C /* RecoveryDashboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecoveryDashboardView.swift; sourceTree = "<group>"; };
@@ -118,17 +128,22 @@
 		F08B59E2B3AAF2302E9B17E3 /* XLSXRescueApp */ = {
 			isa = PBXGroup;
 			children = (
+				2A7217DB4FF6552FC23EA0F5 /* ActiveRecoveryPanel.swift */,
 				B2C151BB0E10042BCEDAAADD /* AppError.swift */,
 				D1B332515F74498323797439 /* AppRecoveryRunner.swift */,
 				AA62B14A08178136646F7EEB /* Assets.xcassets */,
 				B7D6B879604EBD35504B553C /* ClipboardService.swift */,
+				C66DA800AB13F757D136D8CE /* ConfigurationPanel.swift */,
+				0408B569BC58541C0FFAA971 /* ErrorBanner.swift */,
 				05FBADECACFEA80C80657C31 /* FileSelectionService.swift */,
+				19C37C78299F0BEDCE796732 /* InputPanel.swift */,
 				2D583CD98CF1BDF9BEBB494A /* ProgressPresentation.swift */,
 				D6CC14426B0D51FF92090FCA /* RecoveryConfiguration.swift */,
 				CF30E9A964B84D82839E825C /* RecoveryDashboardView.swift */,
 				EB4DF8505FA0B7232C43DE1C /* RecoveryRunning.swift */,
 				9A1D96E6A592E75BABB70086 /* RecoverySessionState.swift */,
 				D6DCFDC840AFB517DCE79A4F /* RecoveryViewModel.swift */,
+				488488619E4380640E652CF4 /* ResultPanel.swift */,
 				4D5938E022E48BCD26234ECA /* XLSXRescueApp.entitlements */,
 				B2D0325E2A118036B5FB37F5 /* XLSXRescueApp.swift */,
 			);
@@ -243,16 +258,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E54D75E37473FF766EA11A10 /* ActiveRecoveryPanel.swift in Sources */,
 				01CAB0D122D968D7940319FF /* AppError.swift in Sources */,
 				B1319DE401A285D8276DEBB8 /* AppRecoveryRunner.swift in Sources */,
 				4234BBE085C9745CC97D8506 /* ClipboardService.swift in Sources */,
+				EC6152E1A625DF235708B9C5 /* ConfigurationPanel.swift in Sources */,
+				AF37291DA57965430ADAA848 /* ErrorBanner.swift in Sources */,
 				797CB26E8EE56CFDF47654A6 /* FileSelectionService.swift in Sources */,
+				ACE6C22D122760667E1E22C1 /* InputPanel.swift in Sources */,
 				6BC21BF5DF047031540B0849 /* ProgressPresentation.swift in Sources */,
 				D6FDC00DBEF85769657DEF34 /* RecoveryConfiguration.swift in Sources */,
 				DD8A8390510F3D6D12329E30 /* RecoveryDashboardView.swift in Sources */,
 				DFC474743F427063E6D793E4 /* RecoveryRunning.swift in Sources */,
 				6CECB4429B794D66FC5ECC46 /* RecoverySessionState.swift in Sources */,
 				372E38E874DA62949C779027 /* RecoveryViewModel.swift in Sources */,
+				049E3BABA2C67D32A5966983 /* ResultPanel.swift in Sources */,
 				65281360879E692E2315110B /* XLSXRescueApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

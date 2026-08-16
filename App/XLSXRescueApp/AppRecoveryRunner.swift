@@ -177,9 +177,9 @@ final class AppRecoveryRunner: RecoveryRunning, @unchecked Sendable {
             return [AnyCandidateSource(try WordlistCandidateSource(stageID: stage, url: url, cursor: cursor))]
         case .bruteForce(let characterSet, let minimum, let maximum):
             var seen = Set<Character>()
-            let characters = characterSet.filter { seen.insert($0).inserted }
+            let characters = Array(characterSet).filter { seen.insert($0).inserted }
             let resumeLength = checkpoint.flatMap(Self.length(from:))
-            return try (minimum...maximum).compactMap { length in
+            return try (minimum...maximum).compactMap { length -> AnyCandidateSource? in
                 if let resumeLength, length < resumeLength { return nil }
                 let stage = "bruteforce-\(length)"
                 let cursor = checkpoint?.stage == stage ? checkpoint?.cursor ?? 0 : 0

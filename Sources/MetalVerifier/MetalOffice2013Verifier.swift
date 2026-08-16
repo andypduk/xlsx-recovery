@@ -12,7 +12,7 @@ public final class MetalOffice2013Verifier: CandidateVerifier, @unchecked Sendab
 
     public init(device: MTLDevice? = MTLCreateSystemDefaultDevice()) throws {
         guard let device, let queue = device.makeCommandQueue() else { throw MetalVerifierError.unavailable }
-        guard let url = Bundle.module.url(forResource: "Office2013KDF", withExtension: "metal"),
+        guard let url = Bundle.module.url(forResource: "Office2013KDF", withExtension: "metal-source"),
               let source = try? String(contentsOf: url, encoding: .utf8),
               let library = try? device.makeLibrary(source: source, options: nil) else { throw MetalVerifierError.library }
         guard let function = library.makeFunction(name: "office2013_kdf") else { throw MetalVerifierError.function }

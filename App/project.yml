@@ -1,0 +1,55 @@
+name: XLSXRescueApp
+options:
+  deploymentTarget:
+    macOS: "15.0"
+  createIntermediateGroups: true
+packages:
+  XLSXRescueCore:
+    path: ..
+targets:
+  XLSXRescueApp:
+    type: application
+    platform: macOS
+    sources:
+      - XLSXRescueApp
+    dependencies:
+      - package: XLSXRescueCore
+        product: OfficeCrypto
+      - package: XLSXRescueCore
+        product: Recovery
+      - package: XLSXRescueCore
+        product: MetalVerifier
+      - package: XLSXRescueCore
+        product: OfficeContainer
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.andyg.xlsxrescue
+        PRODUCT_NAME: XLSXRescueApp
+        SWIFT_VERSION: "6.0"
+        GENERATE_INFOPLIST_FILE: YES
+        INFOPLIST_KEY_CFBundleDisplayName: XLSX Rescue
+        INFOPLIST_KEY_LSApplicationCategoryType: public.app-category.utilities
+        MACOSX_DEPLOYMENT_TARGET: "15.0"
+        ENABLE_HARDENED_RUNTIME: YES
+        CODE_SIGN_STYLE: Automatic
+        CODE_SIGN_ENTITLEMENTS: XLSXRescueApp/XLSXRescueApp.entitlements
+  XLSXRescueAppTests:
+    type: bundle.unit-test
+    platform: macOS
+    sources:
+      - XLSXRescueAppTests
+    dependencies:
+      - target: XLSXRescueApp
+    settings:
+      base:
+        GENERATE_INFOPLIST_FILE: YES
+        SWIFT_VERSION: "6.0"
+schemes:
+  XLSXRescueApp:
+    build:
+      targets:
+        XLSXRescueApp: all
+        XLSXRescueAppTests: [test]
+    test:
+      targets:
+        - XLSXRescueAppTests

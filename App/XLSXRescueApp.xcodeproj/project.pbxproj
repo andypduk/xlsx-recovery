@@ -1,0 +1,501 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		01CAB0D122D968D7940319FF /* AppError.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2C151BB0E10042BCEDAAADD /* AppError.swift */; };
+		1A3CD225097DF14DD98FA8DD /* RecoveryConfigurationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC87777155615636482EE5CE /* RecoveryConfigurationTests.swift */; };
+		372E38E874DA62949C779027 /* RecoveryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6DCFDC840AFB517DCE79A4F /* RecoveryViewModel.swift */; };
+		65281360879E692E2315110B /* XLSXRescueApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2D0325E2A118036B5FB37F5 /* XLSXRescueApp.swift */; };
+		6BC21BF5DF047031540B0849 /* ProgressPresentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D583CD98CF1BDF9BEBB494A /* ProgressPresentation.swift */; };
+		6CECB4429B794D66FC5ECC46 /* RecoverySessionState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A1D96E6A592E75BABB70086 /* RecoverySessionState.swift */; };
+		8A8AA049221E13E3E2907984 /* Recovery in Frameworks */ = {isa = PBXBuildFile; productRef = 04A3909CC868B242B434E74D /* Recovery */; };
+		AAB1E02F9C57EDF0BB08DD7F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AA62B14A08178136646F7EEB /* Assets.xcassets */; };
+		AC231D13C6CD84AC3DBF6BE8 /* MetalVerifier in Frameworks */ = {isa = PBXBuildFile; productRef = 34C8A62F974C88E99616B1CA /* MetalVerifier */; };
+		D6FDC00DBEF85769657DEF34 /* RecoveryConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6CC14426B0D51FF92090FCA /* RecoveryConfiguration.swift */; };
+		DD8A8390510F3D6D12329E30 /* RecoveryDashboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF30E9A964B84D82839E825C /* RecoveryDashboardView.swift */; };
+		DE7104F9A72A28C5B469904D /* OfficeContainer in Frameworks */ = {isa = PBXBuildFile; productRef = 4D7DFBC8CE709C92F32A174E /* OfficeContainer */; };
+		E624F2B5EF5C8D08EAFA5347 /* OfficeCrypto in Frameworks */ = {isa = PBXBuildFile; productRef = B3CBBB238B56401A441E68C1 /* OfficeCrypto */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		346F134226438662D8126364 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FD9091262A721A2F735C2426 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = EF856B0625E97F5357481815;
+			remoteInfo = XLSXRescueApp;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		2D583CD98CF1BDF9BEBB494A /* ProgressPresentation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressPresentation.swift; sourceTree = "<group>"; };
+		47E22588B23D089F988EFCEF /* i-n */ = {isa = PBXFileReference; lastKnownFileType = folder; name = "i-n"; path = ..; sourceTree = SOURCE_ROOT; };
+		4D5938E022E48BCD26234ECA /* XLSXRescueApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = XLSXRescueApp.entitlements; sourceTree = "<group>"; };
+		9A1D96E6A592E75BABB70086 /* RecoverySessionState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecoverySessionState.swift; sourceTree = "<group>"; };
+		9D17E2A36421DEAD83660DA8 /* XLSXRescueAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = XLSXRescueAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		A8724291CDCD733331876CEC /* XLSXRescueApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = XLSXRescueApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		AA62B14A08178136646F7EEB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		B2C151BB0E10042BCEDAAADD /* AppError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppError.swift; sourceTree = "<group>"; };
+		B2D0325E2A118036B5FB37F5 /* XLSXRescueApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XLSXRescueApp.swift; sourceTree = "<group>"; };
+		CC87777155615636482EE5CE /* RecoveryConfigurationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecoveryConfigurationTests.swift; sourceTree = "<group>"; };
+		CF30E9A964B84D82839E825C /* RecoveryDashboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecoveryDashboardView.swift; sourceTree = "<group>"; };
+		D6CC14426B0D51FF92090FCA /* RecoveryConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecoveryConfiguration.swift; sourceTree = "<group>"; };
+		D6DCFDC840AFB517DCE79A4F /* RecoveryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecoveryViewModel.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		5CEA832B5F03E13404C4B588 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E624F2B5EF5C8D08EAFA5347 /* OfficeCrypto in Frameworks */,
+				8A8AA049221E13E3E2907984 /* Recovery in Frameworks */,
+				AC231D13C6CD84AC3DBF6BE8 /* MetalVerifier in Frameworks */,
+				DE7104F9A72A28C5B469904D /* OfficeContainer in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		10E9993FDC72F47463BBF1DD /* Packages */ = {
+			isa = PBXGroup;
+			children = (
+				47E22588B23D089F988EFCEF /* i-n */,
+			);
+			name = Packages;
+			sourceTree = "<group>";
+		};
+		1E25A512E695818FD5EC3751 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				A8724291CDCD733331876CEC /* XLSXRescueApp.app */,
+				9D17E2A36421DEAD83660DA8 /* XLSXRescueAppTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		448D2E2A633A95A491E15400 /* XLSXRescueAppTests */ = {
+			isa = PBXGroup;
+			children = (
+				CC87777155615636482EE5CE /* RecoveryConfigurationTests.swift */,
+			);
+			path = XLSXRescueAppTests;
+			sourceTree = "<group>";
+		};
+		5B63BE64EC7390D84547B6ED = {
+			isa = PBXGroup;
+			children = (
+				10E9993FDC72F47463BBF1DD /* Packages */,
+				F08B59E2B3AAF2302E9B17E3 /* XLSXRescueApp */,
+				448D2E2A633A95A491E15400 /* XLSXRescueAppTests */,
+				1E25A512E695818FD5EC3751 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		F08B59E2B3AAF2302E9B17E3 /* XLSXRescueApp */ = {
+			isa = PBXGroup;
+			children = (
+				B2C151BB0E10042BCEDAAADD /* AppError.swift */,
+				AA62B14A08178136646F7EEB /* Assets.xcassets */,
+				2D583CD98CF1BDF9BEBB494A /* ProgressPresentation.swift */,
+				D6CC14426B0D51FF92090FCA /* RecoveryConfiguration.swift */,
+				CF30E9A964B84D82839E825C /* RecoveryDashboardView.swift */,
+				9A1D96E6A592E75BABB70086 /* RecoverySessionState.swift */,
+				D6DCFDC840AFB517DCE79A4F /* RecoveryViewModel.swift */,
+				4D5938E022E48BCD26234ECA /* XLSXRescueApp.entitlements */,
+				B2D0325E2A118036B5FB37F5 /* XLSXRescueApp.swift */,
+			);
+			path = XLSXRescueApp;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		82FAF594F06E6122083BB53B /* XLSXRescueAppTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 13D6FF294110B84B8355490B /* Build configuration list for PBXNativeTarget "XLSXRescueAppTests" */;
+			buildPhases = (
+				B3A982011150CC98A158F1B2 /* Sources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				75D42EAA50D7CED3B48690C3 /* PBXTargetDependency */,
+			);
+			name = XLSXRescueAppTests;
+			packageProductDependencies = (
+			);
+			productName = XLSXRescueAppTests;
+			productReference = 9D17E2A36421DEAD83660DA8 /* XLSXRescueAppTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		EF856B0625E97F5357481815 /* XLSXRescueApp */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C52F06DE6FFEC6F7D97B8D0A /* Build configuration list for PBXNativeTarget "XLSXRescueApp" */;
+			buildPhases = (
+				E4E9B06519206424552CE985 /* Sources */,
+				EB42B624130EC8A2F12FE087 /* Resources */,
+				5CEA832B5F03E13404C4B588 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = XLSXRescueApp;
+			packageProductDependencies = (
+				B3CBBB238B56401A441E68C1 /* OfficeCrypto */,
+				04A3909CC868B242B434E74D /* Recovery */,
+				34C8A62F974C88E99616B1CA /* MetalVerifier */,
+				4D7DFBC8CE709C92F32A174E /* OfficeContainer */,
+			);
+			productName = XLSXRescueApp;
+			productReference = A8724291CDCD733331876CEC /* XLSXRescueApp.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		FD9091262A721A2F735C2426 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = YES;
+				LastUpgradeCheck = 1430;
+				TargetAttributes = {
+					EF856B0625E97F5357481815 = {
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = 2CA7E889BBACCC4B9CC03DD3 /* Build configuration list for PBXProject "XLSXRescueApp" */;
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				Base,
+				en,
+			);
+			mainGroup = 5B63BE64EC7390D84547B6ED;
+			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				BA7F850B366E4EA5597C14DF /* XCLocalSwiftPackageReference ".." */,
+			);
+			preferredProjectObjectVersion = 77;
+			productRefGroup = 1E25A512E695818FD5EC3751 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				EF856B0625E97F5357481815 /* XLSXRescueApp */,
+				82FAF594F06E6122083BB53B /* XLSXRescueAppTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		EB42B624130EC8A2F12FE087 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AAB1E02F9C57EDF0BB08DD7F /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		B3A982011150CC98A158F1B2 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1A3CD225097DF14DD98FA8DD /* RecoveryConfigurationTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E4E9B06519206424552CE985 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				01CAB0D122D968D7940319FF /* AppError.swift in Sources */,
+				6BC21BF5DF047031540B0849 /* ProgressPresentation.swift in Sources */,
+				D6FDC00DBEF85769657DEF34 /* RecoveryConfiguration.swift in Sources */,
+				DD8A8390510F3D6D12329E30 /* RecoveryDashboardView.swift in Sources */,
+				6CECB4429B794D66FC5ECC46 /* RecoverySessionState.swift in Sources */,
+				372E38E874DA62949C779027 /* RecoveryViewModel.swift in Sources */,
+				65281360879E692E2315110B /* XLSXRescueApp.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		75D42EAA50D7CED3B48690C3 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = EF856B0625E97F5357481815 /* XLSXRescueApp */;
+			targetProxy = 346F134226438662D8126364 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		34B449F9F87FEB387BC3D428 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				COMBINE_HIDPI_IMAGES = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				SDKROOT = macosx;
+				SWIFT_VERSION = 6.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/XLSXRescueApp.app/Contents/MacOS/XLSXRescueApp";
+			};
+			name = Release;
+		};
+		515F7739E99073E3F979DC5C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"DEBUG=1",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 15.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		76744D8CE22BA3AAC245278B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				COMBINE_HIDPI_IMAGES = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				SDKROOT = macosx;
+				SWIFT_VERSION = 6.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/XLSXRescueApp.app/Contents/MacOS/XLSXRescueApp";
+			};
+			name = Debug;
+		};
+		816B5DAE664A36E6D8EB2B65 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = XLSXRescueApp/XLSXRescueApp.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				ENABLE_HARDENED_RUNTIME = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "XLSX Rescue";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 15.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.andyg.xlsxrescue;
+				PRODUCT_NAME = XLSXRescueApp;
+				SDKROOT = macosx;
+				SWIFT_VERSION = 6.0;
+			};
+			name = Release;
+		};
+		DC1146A93D7B05CEDA6180E0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 15.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+		F6E8B65FCB483A4050751619 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = XLSXRescueApp/XLSXRescueApp.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				ENABLE_HARDENED_RUNTIME = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "XLSX Rescue";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 15.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.andyg.xlsxrescue;
+				PRODUCT_NAME = XLSXRescueApp;
+				SDKROOT = macosx;
+				SWIFT_VERSION = 6.0;
+			};
+			name = Debug;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		13D6FF294110B84B8355490B /* Build configuration list for PBXNativeTarget "XLSXRescueAppTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				76744D8CE22BA3AAC245278B /* Debug */,
+				34B449F9F87FEB387BC3D428 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		2CA7E889BBACCC4B9CC03DD3 /* Build configuration list for PBXProject "XLSXRescueApp" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				515F7739E99073E3F979DC5C /* Debug */,
+				DC1146A93D7B05CEDA6180E0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		C52F06DE6FFEC6F7D97B8D0A /* Build configuration list for PBXNativeTarget "XLSXRescueApp" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F6E8B65FCB483A4050751619 /* Debug */,
+				816B5DAE664A36E6D8EB2B65 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCLocalSwiftPackageReference section */
+		BA7F850B366E4EA5597C14DF /* XCLocalSwiftPackageReference ".." */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = ..;
+		};
+/* End XCLocalSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		04A3909CC868B242B434E74D /* Recovery */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = Recovery;
+		};
+		34C8A62F974C88E99616B1CA /* MetalVerifier */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = MetalVerifier;
+		};
+		4D7DFBC8CE709C92F32A174E /* OfficeContainer */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = OfficeContainer;
+		};
+		B3CBBB238B56401A441E68C1 /* OfficeCrypto */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = OfficeCrypto;
+		};
+/* End XCSwiftPackageProductDependency section */
+	};
+	rootObject = FD9091262A721A2F735C2426 /* Project object */;
+}

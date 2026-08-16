@@ -18,7 +18,7 @@ let package = Package(
             name: "Recovery",
             dependencies: ["OfficeCrypto"]
         ),
-        .target(name: "MetalVerifier", dependencies: ["OfficeCrypto", "Recovery"], resources: [.process("Office2013KDF.metal")]),
+        .target(name: "MetalVerifier", dependencies: ["OfficeCrypto", "Recovery"], resources: [.copy("Office2013KDF.metal-source")]),
         .target(name: "OfficeContainer", dependencies: ["OfficeCrypto"]),
         .executableTarget(
             name: "XLSXRescueCLI",

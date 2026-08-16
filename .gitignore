@@ -3,3 +3,4 @@
 *.xcresult
 work/
 outputs/
+.superpowers/

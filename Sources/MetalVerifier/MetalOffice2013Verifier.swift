@@ -31,9 +31,14 @@ public final class MetalOffice2013Verifier: CandidateVerifier, @unchecked Sendab
             lengths.append(UInt32(bytes.count))
             packed.replaceSubrange(index*64..<(index*64+bytes.count), with:bytes)
         }
-        guard let passwordBuffer=device.makeBuffer(bytes:(packed as NSData).bytes,length:packed.count,options:.storageModeShared),
-              let lengthBuffer=device.makeBuffer(bytes:&lengths,length:lengths.count*4,options:.storageModeShared),
-              let saltBuffer=device.makeBuffer(bytes:(parameters.salt as NSData).bytes,length:16,options:.storageModeShared),
+        let lengthBuffer=lengths.withUnsafeBytes { bytes in
+            device.makeBuffer(bytes:bytes.baseAddress!,length:bytes.count,options:.storageModeShared)
+        }
+        let passwordBuffer=packed.withUnsafeBytes { bytes in device.makeBuffer(bytes:bytes.baseAddress!,length:bytes.count,options:.storageModeShared) }
+        let saltBuffer=parameters.salt.withUnsafeBytes { bytes in device.makeBuffer(bytes:bytes.baseAddress!,length:bytes.count,options:.storageModeShared) }
+        guard let passwordBuffer,
+              let lengthBuffer,
+              let saltBuffer,
               let output=device.makeBuffer(length:candidates.count*64,options:.storageModeShared),
               let command=queue.makeCommandBuffer(), let encoder=command.makeComputeCommandEncoder() else { throw MetalVerifierError.command }
         var spins=UInt32(parameters.spinCount)
@@ -48,7 +53,7 @@ public final class MetalOffice2013Verifier: CandidateVerifier, @unchecked Sendab
         encoder.setBuffer(saltBuffer,offset:0,index:2); encoder.setBuffer(spinBuffer,offset:0,index:3); encoder.setBuffer(output,offset:0,index:4)
         let width=min(pipeline.maxTotalThreadsPerThreadgroup,64)
         encoder.dispatchThreads(MTLSize(width:candidates.count,height:1,depth:1),threadsPerThreadgroup:MTLSize(width:width,height:1,depth:1))
-        encoder.endEncoding(); command.commit(); await command.completed()
+        encoder.endEncoding(); command.commit(); waitForCompletion(command)
         guard command.status == .completed else { throw MetalVerifierError.command }
         for index in candidates.indices {
             let words=output.contents().advanced(by:index*64).assumingMemoryBound(to:UInt64.self)
@@ -58,4 +63,6 @@ public final class MetalOffice2013Verifier: CandidateVerifier, @unchecked Sendab
         }
         return nil
     }
+
+    private func waitForCompletion(_ command:MTLCommandBuffer) { command.waitUntilCompleted() }
 }

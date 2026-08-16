@@ -46,9 +46,13 @@ public enum Office2013KDF {
 
         var iterationInput = Data(count: 4 + SHA512.byteCount)
         for iteration in 0..<parameters.spinCount {
-            iterationInput.withUnsafeMutableBytes { raw in
-                raw.storeBytes(of: UInt32(iteration).littleEndian, as: UInt32.self)
-                raw.baseAddress!.advanced(by: 4).copyMemory(from: (digest as NSData).bytes, byteCount: digest.count)
+            digest.withUnsafeBytes { digestBytes in
+                iterationInput.withUnsafeMutableBytes { raw in
+                    let value=UInt32(iteration).littleEndian
+                    raw[0]=UInt8(truncatingIfNeeded:value); raw[1]=UInt8(truncatingIfNeeded:value>>8)
+                    raw[2]=UInt8(truncatingIfNeeded:value>>16); raw[3]=UInt8(truncatingIfNeeded:value>>24)
+                    raw.baseAddress!.advanced(by: 4).copyMemory(from:digestBytes.baseAddress!,byteCount:digestBytes.count)
+                }
             }
             digest = sha512(iterationInput)
         }
@@ -61,6 +65,12 @@ public enum Office2013KDF {
             verifierInputKey: deriveKey(digest: digest, blockKey: verifierInputBlockKey),
             verifierHashKey: deriveKey(digest: digest, blockKey: verifierHashBlockKey)
         )
+    }
+
+    public static func deriveKey(spinDigest digest: Data, blockKey: Data, keyBytes: Int = 32) -> Data {
+        precondition(digest.count == SHA512.byteCount && keyBytes > 0 && keyBytes <= SHA512.byteCount)
+        var input=Data(); input.append(digest); input.append(blockKey)
+        return sha512(input).prefix(keyBytes)
     }
 
     public static func sha512(_ data: Data) -> Data {

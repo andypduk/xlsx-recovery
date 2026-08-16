@@ -22,7 +22,7 @@ let package = Package(
         .target(name: "OfficeContainer", dependencies: ["OfficeCrypto"]),
         .executableTarget(
             name: "XLSXRescueCLI",
-            dependencies: ["OfficeCrypto"]
+            dependencies: ["OfficeCrypto", "Recovery", "MetalVerifier", "OfficeContainer"]
         ),
         .testTarget(
             name: "CLITests",

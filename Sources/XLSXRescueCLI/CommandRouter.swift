@@ -7,9 +7,14 @@ public enum SecretSource: Equatable, Sendable {
 
 public struct RecoveryOptions: Equatable, Sendable {
     public var wordlist: String?
+    public var characterSet: String
+    public var minimumLength: Int
+    public var maximumLength: Int
+    public var showPassword: Bool
 
-    public init(wordlist: String? = nil) {
+    public init(wordlist: String? = nil, characterSet: String = "abcdefghijklmnopqrstuvwxyz0123456789", minimumLength: Int = 1, maximumLength: Int = 6, showPassword: Bool = false) {
         self.wordlist = wordlist
+        self.characterSet=characterSet; self.minimumLength=minimumLength; self.maximumLength=maximumLength; self.showPassword=showPassword
     }
 }
 
@@ -131,6 +136,7 @@ public enum CommandRouter {
 
     private static func parseRecoveryOptions(_ arguments: [String]) throws -> RecoveryOptions {
         var wordlist: String?
+        var charset="abcdefghijklmnopqrstuvwxyz0123456789", minimum=1, maximum=6, show=false
         var index = 0
         while index < arguments.count {
             switch arguments[index] {
@@ -139,11 +145,19 @@ public enum CommandRouter {
                 index += 1
                 guard index < arguments.count else { throw CLIError.missingValue("--wordlist") }
                 wordlist = arguments[index]
+            case "--charset":
+                index += 1; guard index < arguments.count, !arguments[index].isEmpty else { throw CLIError.missingValue("--charset") }; charset=arguments[index]
+            case "--min-length":
+                index += 1; guard index < arguments.count, let value=Int(arguments[index]) else { throw CLIError.missingValue("--min-length") }; minimum=value
+            case "--max-length":
+                index += 1; guard index < arguments.count, let value=Int(arguments[index]) else { throw CLIError.missingValue("--max-length") }; maximum=value
+            case "--show-password": show=true
             default:
                 throw CLIError.unknownOption(arguments[index])
             }
             index += 1
         }
-        return RecoveryOptions(wordlist: wordlist)
+        guard minimum>0,maximum>=minimum,maximum<=32 else { throw CLIError.invalidArguments("Lengths must satisfy 1 <= min <= max <= 32.") }
+        return RecoveryOptions(wordlist: wordlist,characterSet:charset,minimumLength:minimum,maximumLength:maximum,showPassword:show)
     }
 }

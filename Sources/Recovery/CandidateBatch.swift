@@ -16,6 +16,22 @@ public protocol CandidateSource: Sendable {
     mutating func nextBatch(limit: Int) throws -> CandidateBatch?
 }
 
+public struct AnyCandidateSource: CandidateSource {
+    private final class Box: @unchecked Sendable {
+        var stage: () -> String
+        var position: () -> UInt64
+        var next: (Int) throws -> CandidateBatch?
+        init<S:CandidateSource>(_ value:S) {
+            var source=value
+            stage={source.stageID}; position={source.cursor}; next={try source.nextBatch(limit:$0)}
+        }
+    }
+    private let box:Box
+    public init<S:CandidateSource>(_ source:S){box=Box(source)}
+    public var stageID:String{box.stage()}; public var cursor:UInt64{box.position()}
+    public mutating func nextBatch(limit:Int)throws->CandidateBatch?{try box.next(limit)}
+}
+
 public enum CandidateSourceError: Error, Equatable {
     case emptyCharacterSet
     case emptyMask

@@ -12,7 +12,10 @@ let package = Package(
     ],
     targets: [
         .target(name: "OfficeCrypto"),
-        .target(name: "Recovery"),
+        .target(
+            name: "Recovery",
+            dependencies: ["OfficeCrypto"]
+        ),
         .executableTarget(
             name: "XLSXRescueCLI",
             dependencies: ["OfficeCrypto"]
@@ -27,7 +30,7 @@ let package = Package(
         ),
         .testTarget(
             name: "RecoveryTests",
-            dependencies: ["Recovery"]
+            dependencies: ["Recovery", "OfficeCrypto"]
         ),
     ],
     swiftLanguageModes: [.v6]

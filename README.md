@@ -2,6 +2,28 @@
 
 Native Swift/Metal utility for authorized recovery of Office 2013 Agile Encryption passwords on Apple Silicon macOS. It preserves the encrypted source and writes a separate unencrypted `.xlsx` only after password and OOXML validation.
 
+## macOS app
+
+The native **XLSX Rescue** dashboard supports the complete local workflow:
+
+- Choose or drop an encrypted `.xlsx`, or paste a visible `$office$` verifier.
+- Select a UTF-8 wordlist or configure a bounded brute-force search.
+- See tested candidates, speed, elapsed time, ETA, Metal/CPU backend, and thermal state.
+- Pause at a checkpoint, resume without retesting earlier candidates, or cancel safely.
+- Reveal and explicitly copy a recovered password.
+- Save a separate validated, unencrypted workbook copy.
+
+Open the supplied app bundle, or build it from source:
+
+```bash
+xcodegen generate --spec App/project.yml
+xcodebuild build -project App/XLSXRescueApp.xcodeproj -scheme XLSXRescueApp -destination 'platform=macOS,arch=arm64'
+```
+
+The personal build uses bundle identifier `com.andyg.xlsxrescue`, automatic signing, Hardened Runtime, and no extra entitlements. If `security find-identity -v -p codesigning` reports no valid identity, add an Apple Development certificate in Xcode under **Settings → Accounts → Manage Certificates**, then rebuild. An ad-hoc-signed local build remains usable on the Mac that built it.
+
+The app performs no network requests. It opens the source workbook read-only and writes decrypted data only to a separate location selected in the save panel.
+
 ## Build
 
 ```bash

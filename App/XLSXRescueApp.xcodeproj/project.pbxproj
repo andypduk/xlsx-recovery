@@ -392,17 +392,20 @@
 				CODE_SIGN_ENTITLEMENTS = XLSXRescueApp/XLSXRescueApp.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
 				ENABLE_HARDENED_RUNTIME = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_CFBundleDisplayName = "XLSX Rescue";
+				INFOPLIST_KEY_CFBundleName = "XLSX Rescue";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 15.0;
+				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.andyg.xlsxrescue;
-				PRODUCT_NAME = XLSXRescueApp;
+				PRODUCT_NAME = "XLSX Rescue";
 				SDKROOT = macosx;
 				SWIFT_VERSION = 6.0;
 			};
@@ -471,17 +474,20 @@
 				CODE_SIGN_ENTITLEMENTS = XLSXRescueApp/XLSXRescueApp.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
 				ENABLE_HARDENED_RUNTIME = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_CFBundleDisplayName = "XLSX Rescue";
+				INFOPLIST_KEY_CFBundleName = "XLSX Rescue";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 15.0;
+				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.andyg.xlsxrescue;
-				PRODUCT_NAME = XLSXRescueApp;
+				PRODUCT_NAME = "XLSX Rescue";
 				SDKROOT = macosx;
 				SWIFT_VERSION = 6.0;
 			};

@@ -195,18 +195,7 @@ final class AppRecoveryRunner: RecoveryRunning, @unchecked Sendable {
     private func totalCandidates(_ configuration: RecoveryConfiguration) throws -> UInt64? {
         switch configuration.method {
         case .bruteForce: return try configuration.totalCandidates
-        case .wordlist(let url):
-            let data = try Data(contentsOf: url, options: .mappedIfSafe)
-            guard !data.isEmpty else { return 0 }
-            var lines: UInt64 = 0
-            var inLine = false
-            for byte in data {
-                if byte == 0x0A || byte == 0x0D {
-                    if inLine { lines += 1; inLine = false }
-                } else { inLine = true }
-            }
-            if inLine { lines += 1 }
-            return lines
+        case .wordlist: return nil
         }
     }
 

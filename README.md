@@ -72,6 +72,8 @@ The password is read with terminal echo disabled. The source path cannot be used
 - Metal performs the 100,000-round SHA-512 hot loop in shared Apple Silicon memory.
 - Metal results are confirmed with CPU AES-256-CBC verification.
 - Metal falls back to CPU for unsupported candidate lengths or initialization failure.
+- Wordlists are streamed in 64 KiB chunks and tested in bounded batches; they are never loaded or counted in full.
+- Individual wordlist entries are limited to 4 KiB so malformed lines cannot grow memory without bound.
 - Critical thermal pressure stops recovery at a batch boundary.
 - No verifier, password, candidate, derived key, or decrypted content is logged.
 

@@ -53,39 +53,106 @@ public struct MaskCandidateSource: CandidateSource {
 }
 
 public struct WordlistCandidateSource: CandidateSource {
+    private static let readChunkSize = 64 * 1_024
+    private static let maximumCandidateBytes = 4_096
+
     public let stageID: String
     public private(set) var cursor: UInt64
-    private let data: Data
+    private let handle: FileHandle
+    private var buffer = Data()
+    private var bufferIndex = 0
+    private var reachedEnd = false
 
     public init(stageID: String = "wordlist-1", url: URL, cursor: UInt64 = 0) throws {
         self.stageID = stageID
-        self.data = try Data(contentsOf: url, options: [.mappedIfSafe])
-        guard cursor <= UInt64(data.count) else { throw CandidateSourceError.cursorOutOfRange }
+        let handle = try FileHandle(forReadingFrom: url)
+        let fileSize = try handle.seekToEnd()
+        guard cursor <= fileSize else {
+            try? handle.close()
+            throw CandidateSourceError.cursorOutOfRange
+        }
+        try handle.seek(toOffset: cursor)
+        self.handle = handle
         self.cursor = cursor
     }
 
     public mutating func nextBatch(limit: Int) throws -> CandidateBatch? {
         guard limit > 0 else { throw CandidateSourceError.invalidBatchSize }
-        guard cursor < UInt64(data.count) else { return nil }
         let start = cursor
         var candidates: [String] = []
-        while cursor < UInt64(data.count), candidates.count < limit {
-            let lineStart = Int(cursor)
-            var lineEnd = lineStart
-            while lineEnd < data.count, data[lineEnd] != 0x0A, data[lineEnd] != 0x0D {
-                lineEnd += 1
-            }
-            let line = data[lineStart..<lineEnd]
-            guard let candidate = String(data: line, encoding: .utf8) else {
-                throw CandidateSourceError.invalidUTF8(offset: cursor)
-            }
+        candidates.reserveCapacity(limit)
+        while candidates.count < limit, let candidate = try nextCandidate() {
             candidates.append(candidate)
-            while lineEnd < data.count, data[lineEnd] == 0x0A || data[lineEnd] == 0x0D {
-                lineEnd += 1
-            }
-            cursor = UInt64(lineEnd)
         }
+        guard !candidates.isEmpty else { return nil }
         return CandidateBatch(startCursor: start, candidates: candidates)
+    }
+
+    private mutating func nextCandidate() throws -> String? {
+        let candidateOffset = cursor
+        while true {
+            if let delimiter = buffer[bufferIndex...].firstIndex(where: Self.isLineDelimiter) {
+                let byteCount = delimiter - bufferIndex
+                try validateCandidateLength(byteCount, offset: candidateOffset)
+                guard let candidate = String(data: buffer[bufferIndex..<delimiter], encoding: .utf8) else {
+                    throw CandidateSourceError.invalidUTF8(offset: candidateOffset)
+                }
+                bufferIndex = delimiter
+                cursor += UInt64(byteCount)
+                try skipLineDelimiters()
+                return candidate
+            }
+
+            let byteCount = buffer.count - bufferIndex
+            try validateCandidateLength(byteCount, offset: candidateOffset)
+            if reachedEnd {
+                guard byteCount > 0 else { return nil }
+                guard let candidate = String(data: buffer[bufferIndex...], encoding: .utf8) else {
+                    throw CandidateSourceError.invalidUTF8(offset: candidateOffset)
+                }
+                bufferIndex = buffer.count
+                cursor += UInt64(byteCount)
+                return candidate
+            }
+            try readMore()
+        }
+    }
+
+    private mutating func skipLineDelimiters() throws {
+        while true {
+            while bufferIndex < buffer.count, Self.isLineDelimiter(buffer[bufferIndex]) {
+                bufferIndex += 1
+                cursor += 1
+            }
+            guard bufferIndex == buffer.count, !reachedEnd else { return }
+            try readMore()
+        }
+    }
+
+    private mutating func readMore() throws {
+        if bufferIndex > 0 {
+            buffer.removeSubrange(buffer.startIndex..<bufferIndex)
+            bufferIndex = 0
+        }
+        let chunk = try handle.read(upToCount: Self.readChunkSize) ?? Data()
+        if chunk.isEmpty {
+            reachedEnd = true
+        } else {
+            buffer.append(chunk)
+        }
+    }
+
+    private func validateCandidateLength(_ byteCount: Int, offset: UInt64) throws {
+        guard byteCount <= Self.maximumCandidateBytes else {
+            throw CandidateSourceError.candidateTooLong(
+                offset: offset,
+                maximumBytes: Self.maximumCandidateBytes
+            )
+        }
+    }
+
+    private static func isLineDelimiter(_ byte: UInt8) -> Bool {
+        byte == 0x0A || byte == 0x0D
     }
 }
 

@@ -32,9 +32,32 @@ final class AppRecoveryRunnerTests: XCTestCase {
         XCTAssertEqual(result, .found(.init(password: "hashcat", sourceWorkbook: nil)))
     }
 
-    private func makeRunner(directory: URL) -> AppRecoveryRunner {
+    func testStreamingWordlistProgressDoesNotRequireAnUpfrontTotal() async throws {
+        let directory = temporaryDirectory()
+        defer { try? FileManager.default.removeItem(at: directory) }
+        try FileManager.default.createDirectory(at: directory, withIntermediateDirectories: true)
+        let words = directory.appendingPathComponent("words.txt")
+        try Data("wrong\n".utf8).write(to: words)
+        let recorder = ProgressRecorder()
+        let runner = makeRunner(directory: directory, verifier: SlowVerifier())
+        let input = try await runner.inspect(.officeHash(verifier))
+
+        _ = try await runner.recover(
+            input: input,
+            configuration: .init(method: .wordlist(words)),
+            resume: false,
+            progress: { recorder.append($0) }
+        )
+
+        XCTAssertNil(recorder.snapshot().first?.total)
+    }
+
+    private func makeRunner(
+        directory: URL,
+        verifier: any CandidateVerifier = FixtureVerifier()
+    ) -> AppRecoveryRunner {
         AppRecoveryRunner(checkpointDirectory: directory) { _ in
-            AppBackend(verifier: FixtureVerifier(), label: "Test CPU")
+            AppBackend(verifier: verifier, label: "Test CPU")
         }
     }
 
@@ -46,5 +69,25 @@ final class AppRecoveryRunnerTests: XCTestCase {
 private struct FixtureVerifier: CandidateVerifier {
     func matchingIndex(in candidates: [String], parameters: Office2013Parameters) async throws -> Int? {
         candidates.firstIndex(of: "hashcat")
+    }
+}
+
+private struct SlowVerifier: CandidateVerifier {
+    func matchingIndex(in candidates: [String], parameters: Office2013Parameters) async throws -> Int? {
+        try await Task.sleep(for: .seconds(1.1))
+        return nil
+    }
+}
+
+private final class ProgressRecorder: @unchecked Sendable {
+    private let lock = NSLock()
+    private var values: [RunnerProgress] = []
+
+    func append(_ value: RunnerProgress) {
+        lock.withLock { values.append(value) }
+    }
+
+    func snapshot() -> [RunnerProgress] {
+        lock.withLock { values }
     }
 }

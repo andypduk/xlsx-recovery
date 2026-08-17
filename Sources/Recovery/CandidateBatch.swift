@@ -38,5 +38,6 @@ public enum CandidateSourceError: Error, Equatable {
     case searchSpaceOverflow
     case invalidBatchSize
     case invalidUTF8(offset: UInt64)
+    case candidateTooLong(offset: UInt64, maximumBytes: Int)
     case cursorOutOfRange
 }

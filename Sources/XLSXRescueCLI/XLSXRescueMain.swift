@@ -37,7 +37,8 @@ import Recovery
     }
 
     static func recover(parameters:Office2013Parameters,options:RecoveryOptions) async throws {
-        let verifier=await BackendSelector.select(parameters:parameters)
+        let backend=await BackendSelector.selection(parameters:parameters)
+        let verifier=backend.verifier
         var sources:[AnyCandidateSource]=[]
         if let path=options.wordlist { sources.append(AnyCandidateSource(try WordlistCandidateSource(url:URL(fileURLWithPath:path)))) }
         else {
@@ -49,7 +50,7 @@ import Recovery
         let identity=RecoveryIdentity(fingerprint:RecoveryIdentity.digest(parameters.salt+parameters.encryptedVerifier+parameters.encryptedVerifierHash),configurationDigest:"cli-v1")
         var tested:UInt64=0
         for source in sources {
-            let result=try await RecoveryEngine(verifier:verifier,batchSize:256,progress:{ snapshot in
+            let result=try await RecoveryEngine(verifier:verifier,batchSize:backend.batchSize,progress:{ snapshot in
                 fputs("\r\(snapshot.tested) tested, \(Int(snapshot.candidatesPerSecond))/s",stderr)
             }).run(source:source,parameters:parameters,identity:identity,initialTested:tested)
             switch result {

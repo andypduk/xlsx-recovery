@@ -57,7 +57,7 @@ final class AppRecoveryRunnerTests: XCTestCase {
         verifier: any CandidateVerifier = FixtureVerifier()
     ) -> AppRecoveryRunner {
         AppRecoveryRunner(checkpointDirectory: directory) { _ in
-            AppBackend(verifier: verifier, label: "Test CPU")
+            AppBackend(verifier: verifier, label: "Test CPU", batchSize: 256)
         }
     }
 

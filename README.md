@@ -70,6 +70,7 @@ The password is read with terminal echo disabled. The source path cannot be used
 
 - The CPU verifier is the correctness oracle.
 - Metal performs the 100,000-round SHA-512 hot loop in shared Apple Silicon memory.
+- Metal uses 4,096-candidate batches to amortize command-buffer and buffer setup; CPU fallback remains at 256 and serious thermal pressure halves either batch size.
 - Metal results are confirmed with CPU AES-256-CBC verification.
 - Metal falls back to CPU for unsupported candidate lengths or initialization failure.
 - Wordlists are streamed in 64 KiB chunks and tested in bounded batches; they are never loaded or counted in full.

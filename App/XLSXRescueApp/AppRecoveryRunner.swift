@@ -7,6 +7,7 @@ import Recovery
 struct AppBackend: Sendable {
     let verifier: any CandidateVerifier
     let label: String
+    let batchSize: Int
 }
 
 final class AppRecoveryRunner: RecoveryRunning, @unchecked Sendable {
@@ -20,7 +21,7 @@ final class AppRecoveryRunner: RecoveryRunning, @unchecked Sendable {
         checkpointDirectory: URL? = nil,
         backendProvider: @escaping BackendProvider = { parameters in
             let selected = await BackendSelector.selection(parameters: parameters)
-            return AppBackend(verifier: selected.verifier, label: selected.label)
+            return AppBackend(verifier: selected.verifier, label: selected.label, batchSize: selected.batchSize)
         }
     ) {
         self.checkpointDirectory = checkpointDirectory ?? Self.defaultCheckpointDirectory
@@ -61,7 +62,7 @@ final class AppRecoveryRunner: RecoveryRunning, @unchecked Sendable {
         for source in sources {
             let engine = RecoveryEngine(
                 verifier: backend.verifier,
-                batchSize: 256,
+                batchSize: backend.batchSize,
                 shouldCancel: { [control] in control.request != .none },
                 progress: { snapshot in
                     let duration = started.duration(to: clock.now)
